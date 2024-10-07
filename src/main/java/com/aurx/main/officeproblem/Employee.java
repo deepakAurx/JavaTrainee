@@ -41,7 +41,7 @@ public class Employee {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", employeeType='" + employeeType + '\'' +
-            //    ", department=" + department +
+               ", department=" + department +
                 '}';
     }
 }
