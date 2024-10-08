@@ -37,11 +37,11 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "{" +
-                "id=" + id +
+        return "Employee{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", employeeType='" + employeeType + '\'' +
-               ", department=" + department +
+                ", department=" + department +
                 '}';
     }
 }
