@@ -12,6 +12,10 @@ public class MusicPlayback {
     }
     public void playSongs(){
         System.out.println("Starting Shuffling the songs");
+        System.out.println("before shuffling:");
+        for(Song s:songs){
+            System.out.println(s.getSongName());
+        }
         shufflingSongs();
         System.out.println("After Shuffling:");
             for(Song s:songs){
@@ -22,7 +26,7 @@ public class MusicPlayback {
     private void shufflingSongs() {
         Random random=new Random();
         for(int i=0;i<songs.size();i++){
-            Collections.swap(songs,i,random.nextInt(i+1));
+            Collections.swap(songs,i,random.nextInt(i+2));
         }
     }
 }
