@@ -18,38 +18,14 @@ public class ProductMain {
 
     private static void getData(String strJson) {
         if (strJson == null && strJson.isEmpty()) {
+            System.out.println("No Data Recieved:");
             return;
         }
         Scanner scanner = new Scanner(System.in);
-        JsonUtils.parsingJson(strJson);
-        JsonObject jsonObject = JsonParser.parseString(strJson).getAsJsonObject();
-        JsonArray jsonArray = jsonObject.get("products").getAsJsonArray();
-        System.out.println("How many product you want: ");
+       JsonArray jsonArray=JsonUtils.parsingJson(strJson);
+        System.out.println("How many products do you want: ");
         int data = scanner.nextInt();
-        if (data < jsonArray.size()) {
-            for (int i = 0; i < data; i++) {
-                JsonObject jsonProduct = jsonArray.get(i).getAsJsonObject();
-                System.out.println("Product " + (i + 1));
-
-                int id = jsonProduct.get("id").getAsInt();
-                System.out.println("id " + id);
-                String title = jsonProduct.get("title").getAsString();
-                System.out.println("title " + title);
-                String description = jsonProduct.get("description").getAsString();
-                System.out.println("description " + description);
-                double price = jsonProduct.get("price").getAsDouble();
-                System.out.println("price " + price);
-                if(jsonProduct.get("brand").getAsJsonObject().keySet().contains("brand")) {
-                    String brand = jsonProduct.get("brand").getAsString();
-                    System.out.println("brand " + brand);
-                }
-
-                JsonArray images = jsonProduct.get("images").getAsJsonArray();
-                System.out.println("images " + images.get(0));
-            }
-        } else {
-            System.out.println(data + " is Insufficient");
-        }
+        JsonUtils.fetchingData(data,jsonArray);
     }
 
 
