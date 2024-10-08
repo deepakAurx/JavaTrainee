@@ -26,7 +26,7 @@ public class MusicPlayback {
     private void shufflingSongs() {
         Random random=new Random();
         for(int i=0;i<songs.size();i++){
-            Collections.swap(songs,i,random.nextInt(i+2));
+            Collections.swap(songs,i,random.nextInt(i+1));
         }
     }
 }
