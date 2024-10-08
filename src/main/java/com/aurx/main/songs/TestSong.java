@@ -7,7 +7,7 @@ public class TestSong {
         playback.addSong(new Song("song 2"));
         playback.addSong(new Song("song 3"));
         playback.addSong(new Song("song 4"));
-        playback.addSong(new Song("song 5"));
+        playback.addSong(new Song("song 10"));
         playback.playSongs();
     }
 }
