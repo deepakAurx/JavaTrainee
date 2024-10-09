@@ -13,7 +13,7 @@ public class MusicPlayback {
     public void playSongs(){
         System.out.println("Starting Shuffling the songs");
         shufflingSongs();
-        System.out.println("Shuffling completed");
+        System.out.println("Shuffling the songs are completed");
         System.out.println("After Shuffling:");
             for(Song s:songs){
                 System.out.println(s.getSongName());
