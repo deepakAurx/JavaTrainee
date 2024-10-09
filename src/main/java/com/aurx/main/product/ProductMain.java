@@ -12,13 +12,13 @@ import java.util.Scanner;
 
 public class ProductMain {
     public static void main(String[] args) {
-        String strJson = JsonUtils.getJsonFromUrl("https://dummyjson.com/products/");
+        String strJson = JsonUtils.getApiResponse("https://dummyjson.com/products/");
         System.out.println("Getting All Content: " + strJson);
         populateProductData(strJson);
     }
 
     private static void populateProductData(String strJson) {
-        if (strJson == null && strJson.isEmpty()) {
+        if (strJson == null || strJson.isEmpty()) {
             System.out.println("No Data Recieved:");
             return;
         }

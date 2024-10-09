@@ -18,6 +18,9 @@ public class JsonUtils {
     private static final String BRAND = "brand";
     private static final String IMAGES="images";
     public static JsonArray parsingJson(String strJson){
+        if(strJson==null || strJson.isEmpty()){
+            return new JsonArray() ;
+        }
         try {
             JsonObject jsonObject = JsonParser.parseString(strJson).getAsJsonObject();
             return jsonObject.getAsJsonArray("products");
@@ -28,11 +31,14 @@ public class JsonUtils {
     }
 
     public static List<Product> fetchingProduct(int data, JsonArray jsonArray) {
+        List<Product> products=new ArrayList<>();
+        if(jsonArray.isJsonNull() || jsonArray.isEmpty()){
+            return products;
+        }
         if (data > jsonArray.size()) {
             System.out.println(data + " is insufficient; only " + jsonArray.size() + " products available.");
-            return null;
+            return products;
         }
-        List<Product> products=new ArrayList<>();
             for (int i = 0; i < data; i++) {
                 JsonObject jsonProduct = jsonArray.get(i).getAsJsonObject();
                 int id = jsonProduct.get(ID).getAsInt();
@@ -54,13 +60,13 @@ public class JsonUtils {
             }
             return products;
         }
-    public static String getJsonFromUrl(String theUrl) {
-        if (theUrl == null && theUrl.isEmpty()) {
-            return null;
-        }
+    public static String getApiResponse(String apiUrl) {
         StringBuilder content = new StringBuilder();
+        if (apiUrl == null || apiUrl.isEmpty()) {
+            return content.toString();
+        }
         try {
-            URL url = new URL(theUrl);
+            URL url = new URL(apiUrl);
             Scanner scanner = new Scanner(url.openStream());
             while (scanner.hasNext()) {
                 content.append(scanner.next()).append(" ");
@@ -68,7 +74,7 @@ public class JsonUtils {
             scanner.close();
         } catch (Exception e) {
             System.out.println("Error fetching data from URL:" + e.getMessage());
-            ;
+
         }
 
         return content.toString();
